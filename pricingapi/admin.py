@@ -41,11 +41,16 @@ class TMFAdmin(admin.ModelAdmin):
     list_per_page = 20
     exclude = ['enable']
 
-    def save_model(self, request, obj, form, change) -> None:
-        if obj.enable:
-            enabled_obj = models.TimeMultiplierFactor.objects.filter(enable=True).first()
-            if enabled_obj:
-                enabled_obj.enable = False
-                enabled_obj.save()
+@admin.register(models.User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'contact_info']
+    list_editable = ['name', 'contact_info']
+    list_per_page = 20
+    exclude = ['enable']
 
-        return super().save_model(request, obj, form, change)
+@admin.register(models.Driver)
+class DriverAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'vechile_id']
+    list_editable = ['name', 'vechile_id']
+    list_per_page = 20
+    exclude = ['enable']

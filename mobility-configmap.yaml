@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mobility-config
+data:
+  postgres_db: mobility
+  postgres_host: localhost
+  postgres_username: postgres
+  postgres_password: postgres
+  

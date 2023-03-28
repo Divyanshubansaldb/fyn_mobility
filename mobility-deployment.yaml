@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mobility-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mobility
+  template:
+    metadata:
+      labels:
+        app: mobility
+    spec:
+      containers:
+      - name: name
+        image: mobility:latest
+        imagePullPolicy: Never
+        envFrom:
+          - configMapRef:
+              name: mobility-config
+        
